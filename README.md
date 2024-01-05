@@ -2,6 +2,13 @@
 
 This project is buit on top of an existing python implementation that uses computer vision to identify and read the registration plates of UK vehicles.
 
+## Requirements
+To run the application at this stage you will need a sample mp4 file as well as a pre-trained pytorch model to enable the image classification. I have provided these resources below:
+
+[Sample Videos](https://drive.google.com/file/d/1R0Jj5p0jVRsgRHNVBXNePtWZjF5ayQRw/view?usp=sharing)
+
+[pytorch pretrained model](https://drive.google.com/file/d/1NdK73iUH9Bn3-5KGRorGCPDRFRxkRxc3/view?usp=sharing)
+
 ## Goal
 I aim to containerize the python implementation and expose it on a web server, allowing it to receive video streams or images for processing. It should then return the vehicle registrations and some miscellaneous data such as MOT/tax status.
 
