@@ -6,7 +6,7 @@ from util import read_license_plate
 
 license_plate_detector = YOLO('./models/license_plate.pt')
 
-cap = cv2.VideoCapture('./sample.mp4')
+cap = cv2.VideoCapture('./samples/sample.mp4')
 
 frame_nmr = -1
 ret = True
@@ -15,7 +15,6 @@ width  = cap.get(3)
 height = cap.get(4)
 
 ret, frame = cap.read()
-cv2.imshow('frame', frame)
 
 while ret:
 
@@ -63,12 +62,14 @@ while ret:
                     x2 += padding_left
                     y2 += padding_top
 
+                    print("REGISTRATION PLATE: "+plate['license_plate']['text'])
+
                     cv2.rectangle(frame, (int(x1), int(y1 - 60)), (int(x2), int(y1 - 10)), (255, 255, 255), -1)
                     cv2.putText(img=frame, text=license_plate_text, org=(int(x1), int(y1) - 30),
                                 fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1, color=(0, 0, 0), thickness=3)
                     
     cv2.rectangle(frame, (int(padding_left), int(padding_top)), (int(width-padding_right), int(height-padding_bottom)), (255, 0, 0), 3)
-    cv2.imshow('frame', frame)
+    #cv2.imshow('frame', frame) ONLY UNCOMMENT IF RUNNING ON A MACHINE
     cv2.waitKey(1)
 
 cap.release()
